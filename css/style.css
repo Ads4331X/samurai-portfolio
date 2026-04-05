@@ -358,3 +358,21 @@ body {
   font-size: 0.82rem;
   color: var(--muted);
 }
+
+/* cards */
+.card {
+  background: rgba(245, 230, 200, 0.75);
+  border: 1px solid rgba(192, 57, 43, 0.2);
+  border-radius: 4px;
+  padding: 1.8rem;
+  backdrop-filter: blur(6px);
+  transition:
+    border-color 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+.card:hover {
+  border-color: var(--red);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(192, 57, 43, 0.15);
+}
