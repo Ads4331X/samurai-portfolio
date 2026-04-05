@@ -47,6 +47,29 @@ function initSlider() {
   );
 }
 
+async function loadHeader() {
+  const res = await fetch("/header.html");
+  const html = await res.text();
+  document.getElementById("header-placeholder").outerHTML = html;
+
+  // Highlight the active nav link
+  const links = document.querySelectorAll(".nav-menu a");
+  links.forEach((link) => {
+    if (link.href === window.location.href) {
+      link.classList.add("active");
+    }
+  });
+}
+
+async function loadFooter() {
+  const res = await fetch("/footer.html");
+  const html = await res.text();
+  document.getElementById("footer-placeholder").outerHTML = html;
+}
+
+loadHeader();
+loadFooter();
+
 /*  init all  */
 document.addEventListener("DOMContentLoaded", () => {
   initSlider();
