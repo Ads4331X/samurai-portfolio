@@ -29,6 +29,7 @@ function initSlider() {
   // initialization
   go(0);
   start();
+
   // event listeners for prev/next buttons and dots
   document.querySelector(".s-btn.prev")?.addEventListener("click", () => {
     go(cur - 1);
@@ -47,6 +48,25 @@ function initSlider() {
   );
 }
 
+// skill bars (animate on scroll)
+function initSkillBars() {
+  const bars = document.querySelectorAll(".skill-fill");
+  if (!bars.length) return;
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.width = e.target.dataset.w;
+          obs.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.3 },
+  );
+  bars.forEach((b) => obs.observe(b));
+}
+
+//  load header and footer using js
 async function loadHeader() {
   const res = await fetch("/header.html");
   const html = await res.text();
@@ -73,4 +93,5 @@ loadFooter();
 /*  init all  */
 document.addEventListener("DOMContentLoaded", () => {
   initSlider();
+  initSkillBars();
 });
