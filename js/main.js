@@ -87,6 +87,56 @@ async function loadFooter() {
   document.getElementById("footer-placeholder").outerHTML = html;
 }
 
+/* ── contact form validation ── */
+function initForm() {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  function showErr(id, msg) {
+    const el = document.getElementById(id + "-err");
+    if (el) el.textContent = msg;
+  }
+  function clearErrs() {
+    document.querySelectorAll(".err").forEach((e) => (e.textContent = ""));
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    clearErrs();
+    let valid = true;
+
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const subject = document.getElementById("subject");
+    const message = document.getElementById("message");
+
+    if (!name.value.trim()) {
+      showErr("name", "Please enter your name.");
+      valid = false;
+    }
+    if (!email.value.trim()) {
+      showErr("email", "Please enter your email.");
+      valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      showErr("email", "Please enter a valid email address.");
+      valid = false;
+    }
+    if (!subject.value.trim()) {
+      showErr("subject", "Please enter a subject.");
+      valid = false;
+    }
+    if (!message.value.trim() || message.value.trim().length < 10) {
+      showErr("message", "Message must be at least 10 characters.");
+      valid = false;
+    }
+
+    if (valid) {
+      form.style.display = "none";
+      document.getElementById("form-success").style.display = "block";
+    }
+  });
+}
+
 loadHeader();
 loadFooter();
 
@@ -94,4 +144,5 @@ loadFooter();
 document.addEventListener("DOMContentLoaded", () => {
   initSlider();
   initSkillBars();
+  initForm();
 });
