@@ -704,7 +704,7 @@ main > section:last-of-type {
   transition: none !important;
 }
 
-/* ── Hamburger button ── */
+/* hamburger button  */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -736,7 +736,7 @@ main > section:last-of-type {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── Tablet (≤900px) ── */
+/* tablet */
 @media (max-width: 900px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -746,14 +746,13 @@ main > section:last-of-type {
   }
 }
 
-/* ── Mobile (≤768px) ── */
+/* mobile */
 @media (max-width: 768px) {
   /* hamburger visible */
   .nav-toggle {
     display: flex;
   }
 
-  /* slide-down mobile menu — move to nav wrapper */
   nav {
     position: fixed;
     top: var(--nav-h);
@@ -801,7 +800,7 @@ main > section:last-of-type {
     padding-left: calc(2rem - 3px);
   }
 
-  /* grids → single column */
+  /* grids single column */
   .footer-grid,
   .grid-2,
   .grid-3,
@@ -828,7 +827,7 @@ main > section:last-of-type {
     padding: 2.5rem 0;
   }
 
-  /* footer secondary nav wraps nicely */
+  /* footer secondary nav wraps  */
   .footer-sec-nav {
     justify-content: center;
   }
@@ -848,14 +847,12 @@ main > section:last-of-type {
     text-overflow: ellipsis;
   }
 
-  /* table horizontal scroll already handled, just ensure padding */
   .dojo-table th,
   .dojo-table td {
     padding: 0.55rem 0.7rem;
     font-size: 0.82rem;
   }
 
-  /* card padding tighter */
   .card {
     padding: 1.2rem;
   }
